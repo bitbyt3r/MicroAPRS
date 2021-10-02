@@ -16,7 +16,7 @@
 typedef int32_t ticks_t;
 typedef int32_t mtime_t;
 
-volatile ticks_t _clock;
+static volatile ticks_t _clock;
 
 static inline ticks_t timer_clock(void) {
     ticks_t result;

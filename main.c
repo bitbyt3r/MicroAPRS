@@ -22,7 +22,7 @@
     #include "protocol/SimpleSerial.h"
 #endif
 
-Serial serial;
+Serial mserial;
 Afsk modem;
 AX25Ctx AX25;
 
@@ -49,12 +49,12 @@ void init(void) {
     AFSK_init(&modem);
     ax25_init(&AX25, &modem, &modem.fd, ax25_callback);
 
-    serial_init(&serial);    
-    stdout = &serial.uart0;
-    stdin  = &serial.uart0;
+    serial_init(&mserial);    
+    stdout = &mserial.uart0;
+    stdin  = &mserial.uart0;
 
     #if SERIAL_PROTOCOL == PROTOCOL_KISS
-        kiss_init(&AX25, &modem, &serial);
+        kiss_init(&AX25, &modem, &mserial);
     #endif
 
     #if SERIAL_PROTOCOL == PROTOCOL_SIMPLE_SERIAL

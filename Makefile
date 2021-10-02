@@ -26,7 +26,7 @@ AVRDUDE_PORT = /dev/usb    # not really needed for usb
 
 # Optimization level, can be [0, 1, 2, 3, s]. 0 turns off optimization.
 # (Note: 3 is not always the best optimization level. See avr-libc FAQ.)
-OPT = s
+OPT = 1
 
 # Output format. (can be srec, ihex, binary)
 FORMAT = ihex
@@ -57,7 +57,7 @@ ASRC =
 
 # List any extra directories to look for include files here.
 #     Each directory must be seperated by a space.
-EXTRAINCDIRS = 
+EXTRAINCDIRS = util
 
 
 # Optional compiler flags.
@@ -152,12 +152,11 @@ AVRDUDE_FLAGS += -E reset #keep chip disabled while cable attached
 # Define programs and commands.
 SHELL = sh
 
-CC = avr-gcc
+CC = avr-gcc-10.1.0-x64-windows/bin/avr-gcc.exe
 
-OBJCOPY = avr-objcopy
-OBJDUMP = avr-objdump
-SIZE = avr-size
-
+OBJCOPY = avr-gcc-10.1.0-x64-windows/bin/avr-objcopy.exe
+OBJDUMP = avr-gcc-10.1.0-x64-windows/bin/avr-objdump.exe
+SIZE = avr-gcc-10.1.0-x64-windows/bin/avr-size.exe
 
 # Programming support using avrdude.
 AVRDUDE = avrdude
@@ -296,7 +295,7 @@ program: $(TARGET).hex $(TARGET).eep
 %.sym: %.elf
 #	@echo
 #	@echo $(MSG_SYMBOL_TABLE) $@
-	@avr-nm -n $< > $@
+	@avr-gcc-10.1.0-x64-windows/bin/avr-nm.exe -n $< > $@
 
 
 

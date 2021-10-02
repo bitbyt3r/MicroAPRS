@@ -1,2 +1,2 @@
 #!/bin/bash
-avrdude -p $2 -c arduino -P /dev/tty$1 -b 115200 -F -U flash:w:images/MicroAPRS.hex
+avr-gcc-10.1.0-x64-windows/bin/avrdude.exe -p m8 -c usbtiny -e -F -U flash:w:images/MicroAPRS.hex
